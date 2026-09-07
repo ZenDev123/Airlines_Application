@@ -5,7 +5,7 @@ int main() {
     Passenger list[100]; 
 
     printf("--- Welcome to Airway Management System ---\n");
-    printf("--- BETA Version 1.2 ---\n");
+    printf("--- BETA Version 1.3 ---\n");
     printf("Enter number of passengers to register: ");
     if (scanf("%d", &n) != 1) return 0;
 
@@ -37,10 +37,10 @@ int main() {
                 printf("\n");
                 break;
             case 2:
-                printf("\n%-10s %-10s %-10s %-10s %-10s", "ID", "Base", "GST","Baggage", "Total");
+                printf("\n%-10s %-10s %-10s %-10s %-10s", "ID", "Base", "Baggage Cost", "GST", "Total");
                 for(int i = 0; i < n; i++) {
                     printf("\n%-10d %-10.2f %-10.2f %-10.2f %-10.2f", 
-                           list[i].customer_id, list[i].base_fare, list[i].gst, list[i].baggage_weight, list[i].total_fare);
+                           list[i].customer_id, list[i].base_fare, list[i].extra_baggage_charge, list[i].gst, list[i].total_fare);
                 }
                 printf("\n");
                 break;

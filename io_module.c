@@ -46,6 +46,7 @@ void displayBoardingPass(Passenger p) {
     printf("\n==========================================");
     printf("\nID: %-5d   Name: %s", p.customer_id, p.name);
     printf("\nFrom: %-10s To: %s", p.source, p.destination);
+    printf("\nDistance: %.2f km", p.distance);
     printf("\nDate: %02d/%02d/%d", p.travel_date.day, p.travel_date.month, p.travel_date.year);
     printf("\n------------------------------------------");
     printf("\nBase Fare:      Rs. %10.2f", p.base_fare);
