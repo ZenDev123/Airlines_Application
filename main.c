@@ -85,8 +85,7 @@ int main() {
                     }
                 }
                 printf("\n--- Entering details for Passenger %d ---\n", n + 1);
-                readDetails(&list[n]);
-                list[n].customer_id = search_id;
+                readDetailsWithId(&list[n], search_id);
                 calculateTicket(&list[n]);
                 n++;
                 printf("Passenger added successfully.\n");

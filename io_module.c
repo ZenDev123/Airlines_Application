@@ -1,9 +1,6 @@
 #include "airways.h"
 
-void readDetails(Passenger *p) {
-    printf("Customer ID: ");
-    scanf("%d", &p->customer_id);
-    
+static void readPassengerDetails(Passenger *p) {
     printf("Full Name: ");
     scanf(" %[^\n]s", p->name); 
 
@@ -30,6 +27,17 @@ void readDetails(Passenger *p) {
 
     printf("Club Membership (Y/N): ");
     scanf(" %c", &p->club_member);
+}
+
+void readDetails(Passenger *p) {
+    printf("Customer ID: ");
+    scanf("%d", &p->customer_id);
+    readPassengerDetails(p);
+}
+
+void readDetailsWithId(Passenger *p, int customer_id) {
+    p->customer_id = customer_id;
+    readPassengerDetails(p);
 }
 
 void displayBoardingPass(Passenger p) {

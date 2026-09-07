@@ -33,6 +33,7 @@ typedef struct {
 
 // Function Prototypes (Experiment 6)
 void readDetails(Passenger *p);
+void readDetailsWithId(Passenger *p, int customer_id);
 void calculateTicket(Passenger *p);
 void displayBoardingPass(Passenger p);
 void displayBalanceSheet(Passenger *p, int n);
