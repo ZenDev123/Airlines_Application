@@ -5,13 +5,25 @@ int main() {
     Passenger list[100]; 
 
     printf("--- Welcome to Airway Management System ---\n");
-    printf("--- BETA Version 1.3 ---\n");
+    printf("--- BETA Version 1.5 ---\n");
     printf("Enter number of passengers to register: ");
     if (scanf("%d", &n) != 1) return 0;
 
     for(int i = 0; i < n; i++) {
         printf("\n--- Entering details for Passenger %d ---\n", i + 1);
-        readDetails(&list[i]);
+        do {
+            printf("Customer ID: ");
+            scanf("%d", &search_id);
+            found_index = -1;
+            if(i > 0) {
+                bubbleSort(list, i);
+                found_index = binarySearch(list, i, search_id);
+                if(found_index != -1) {
+                    printf("Customer ID already exists. Please use another ID.\n");
+                }
+            }
+        } while(found_index != -1);
+        readDetailsWithId(&list[i], search_id);
         calculateTicket(&list[i]);
     }
 
@@ -47,10 +59,8 @@ int main() {
             case 3:
                 printf("\nEnter Passenger ID for Boarding Pass: ");
                 scanf("%d", &search_id);
-                found_index = -1;
-                for(int i=0; i<n; i++) {
-                    if(list[i].customer_id == search_id) found_index = i;
-                }
+                bubbleSort(list, n);
+                found_index = binarySearch(list, n, search_id);
                 if(found_index != -1) displayBoardingPass(list[found_index]);
                 else printf("Passenger ID not found!\n");
                 break;
@@ -84,6 +94,7 @@ int main() {
                         break;
                     }
                 }
+                printf("\n[System] Successfully verified that the ID is unique.\n");
                 printf("\n--- Entering details for Passenger %d ---\n", n + 1);
                 readDetailsWithId(&list[n], search_id);
                 calculateTicket(&list[n]);
